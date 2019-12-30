@@ -1,6 +1,8 @@
 
-# Created by https://www.gitignore.io/api/c,clion,macos
-# Edit at https://www.gitignore.io/?templates=c,clion,macos
+# Created by https://www.gitignore.io/api/c,macos,cmake,clion
+# Edit at https://www.gitignore.io/?templates=c,macos,cmake,clion
+
+easydb
 
 ### C ###
 # Prerequisites
@@ -146,6 +148,23 @@ fabric.properties
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
 
+### CMake ###
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+### CMake Patch ###
+# External projects
+*-prefix/
+
 ### macOS ###
 # General
 .DS_Store
@@ -174,5 +193,4 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# End of https://www.gitignore.io/api/c,clion,macos
-
+# End of https://www.gitignore.io/api/c,macos,cmake,clion
