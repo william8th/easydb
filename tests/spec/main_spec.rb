@@ -1,7 +1,11 @@
 describe 'database' do
+    before do
+        `rm ./../test.db`
+    end
+
     def run_script(commands)
         raw_output = nil
-        IO.popen("./../easydb", "r+") do |pipe|
+        IO.popen("./../easydb ./../test.db", "r+") do |pipe|
             commands.each do |command|
                 pipe.puts command
             end
@@ -79,6 +83,26 @@ describe 'database' do
         expect(result).to match_array([
             "db > ID must be positive.",
             "db > Executed.",
+            "db > Exiting...",
+        ])
+    end
+
+    it 'keeps data after closing connection' do
+        result1 = run_script([
+            "insert 1 william8th will@easydb.com",
+            ".exit",
+        ])
+        expect(result1).to match_array([
+            "db > Executed.",
+            "db > Exiting...",
+        ])
+        result2 = run_script([
+            "select",
+            ".exit",
+        ])
+        expect(result2).to match_array([
+            "db > (1, william8th, will@easydb.com)",
+            "Executed.",
             "db > Exiting...",
         ])
     end
